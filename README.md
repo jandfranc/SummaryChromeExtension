@@ -1,4 +1,5 @@
 #Build the extension
+
 To build the extension, follow these steps:
 
 Clone the repository and navigate to the frontdoor-test directory.
@@ -11,6 +12,7 @@ The Chrome extension is now installed and ready to use!
 
 
 #Nest.js App
+
 To set up the Nest.js app, follow these steps:
 
 Clone the repository and navigate to the backend directory.
@@ -22,6 +24,7 @@ The Nest.js app is now set up and running!
 
 
 #How to use:
+
 Open the chrome extension and click 'enable highlighting'
 Highlight text on the page, then click on the text to generate the highlight.
 Once the highlight is generated, you can hover over highlighted text and a tooltip will show up showing the summary.
