@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Text summarizer",
+  "version": "1.0.0",
+  "description": "Highlight text and generate summaries using OpenAI ChatCompletions API.",
+  "icons": {
+    "48": "images/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "images/icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScript.js"
+      ]
+    }
+  ]
+}
