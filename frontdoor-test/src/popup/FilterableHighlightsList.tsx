@@ -1,7 +1,9 @@
+// Import React hooks and components.
 import React, { useState, useEffect } from 'react';
 import { useSummaryContext } from './SummaryContext';
 import styled from 'styled-components';
 
+// Define styled components for the filterable highlights list.
 const FilterContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -27,14 +29,19 @@ const SummaryListItem = styled.li`
   margin-bottom: 1rem;
 `;
 
+// Define the filterable highlights list component.
 const FilterableHighlightsList: React.FC = () => {
+    // Get the summary context state.
     const { state } = useSummaryContext();
+
+    // Define state for filtering.
     const [textFilter, setTextFilter] = useState('');
     const [tagFilter, setTagFilter] = useState('');
     const [dateFilter, setDateFilter] = useState('newest');
 
     useEffect(() => { }, [state.summaries]);
 
+    // Define event handlers for filter changes.
     const handleTextFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTextFilter(event.target.value);
     };
@@ -47,6 +54,7 @@ const FilterableHighlightsList: React.FC = () => {
         setDateFilter(event.target.value);
     };
 
+    // Filter the summaries based on the current filter state.
     const filteredSummaries = state.summaries
         .filter((summary) => {
             return summary.text && summary.text.toLowerCase().includes(textFilter.toLowerCase());
@@ -65,6 +73,7 @@ const FilterableHighlightsList: React.FC = () => {
             }
         });
 
+    // Render the filterable highlights list with the current filters.
     return (
         <div>
             <h2>Filterable Highlights List</h2>
@@ -100,4 +109,5 @@ const FilterableHighlightsList: React.FC = () => {
     );
 };
 
+// Export the filterable highlights list component.
 export default FilterableHighlightsList;

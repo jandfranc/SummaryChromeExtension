@@ -1,7 +1,7 @@
-
+// Import React hooks and types.
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-
+// Define the summary object type.
 interface Summary {
     id: string;
     text: string;
@@ -10,20 +10,22 @@ interface Summary {
     tags: string[];
 }
 
+// Define the initial state of the summary context.
 interface State {
     summaries: Summary[];
 }
-
 const initialState: State = {
     summaries: [],
 };
 
+// Define the available actions for the summary context.
 type Action =
     | { type: 'ADD_SUMMARY'; payload: Summary }
     | { type: 'UPDATE_SUMMARY'; payload: Summary }
     | { type: 'DELETE_SUMMARY'; payload: string }
     | { type: 'LOAD_SUMMARIES'; payload: Summary[] }; // added new action type
 
+// Define the reducer function for the summary context.
 const reducer = (state: State, action: Action): State => {
     switch (action.type) {
         case 'ADD_SUMMARY':
@@ -50,6 +52,7 @@ const reducer = (state: State, action: Action): State => {
     }
 };
 
+// Create a context for the summary state and actions.
 const SummaryContext = createContext<{
     state: State;
     dispatch: React.Dispatch<Action>;
@@ -58,14 +61,17 @@ const SummaryContext = createContext<{
     dispatch: () => null,
 });
 
+// Define the props for the summary context provider.
 interface Props {
     children: React.ReactNode;
     initialState?: State;
 }
 
+// Create the summary context provider component.
 const SummaryProvider: React.FC<Props> = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // Load summaries from local storage on mount.
     useEffect(() => {
         const loadSummaries = async () => {
             const summariesdata = await new Promise<Summary[]>((resolve) => {
@@ -82,10 +88,12 @@ const SummaryProvider: React.FC<Props> = ({ children }) => {
         loadSummaries();
     }, []);
 
+    // Save summaries to local storage on state change.
     useEffect(() => {
         localStorage.setItem('summaries', JSON.stringify(state.summaries));
     }, [state.summaries]);
 
+    // Render the summary context provider with its children.
     return (
         <SummaryContext.Provider value={{ state, dispatch }}>
             {children}
@@ -93,6 +101,8 @@ const SummaryProvider: React.FC<Props> = ({ children }) => {
     );
 };
 
+// Define a custom hook for using the summary context.
 const useSummaryContext = () => useContext(SummaryContext);
 
+// Export the summary context provider and custom hook.
 export { SummaryProvider, useSummaryContext };

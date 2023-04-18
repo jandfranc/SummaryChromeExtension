@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Styled component for the container of each summary item
 const SummaryItemContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -8,11 +9,13 @@ const SummaryItemContainer = styled.div`
   margin: 0.5rem 0;
 `;
 
+// Styled component for the tag list
 const TagList = styled.p`
   display: flex;
   flex-wrap: wrap;
 `;
 
+// Styled component for individual tags
 const Tag = styled.span`
   background-color: #007bff;
   color: white;
@@ -22,6 +25,7 @@ const Tag = styled.span`
   margin-bottom: 5px;
 `;
 
+// Interface defining the shape of the summary object
 interface Summary {
     _id: string;
     text: string;
@@ -30,10 +34,12 @@ interface Summary {
     tags: string[];
 }
 
+// Props interface for the SummaryItem component
 interface Props {
     summary: Summary;
 }
 
+// SummaryItem component
 const SummaryItem: React.FC<Props> = ({ summary }) => {
     return (
         <SummaryItemContainer>
