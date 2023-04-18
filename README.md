@@ -30,3 +30,6 @@ Highlight text on the page, then click on the text to generate the highlight.
 Once the highlight is generated, you can hover over highlighted text and a tooltip will show up showing the summary.
 Open the extension to see a list of summaries.
 Type anything in the search to search for that term. You can also filter from oldest or newest.
+
+#Testing:
+To run tests, run npm test in either of the directories and it will run its specific tests
