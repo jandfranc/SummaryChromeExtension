@@ -124,10 +124,6 @@ document.addEventListener('click', (e: MouseEvent) => {
 });
 
 
-
-
-
-
 chrome.runtime.onMessage.addListener((message: ContentScriptMessage, sender, sendResponse) => {
     if (message.type === 'TOGGLE_HIGHLIGHTING') {
         isHighlightingEnabled = message.payload.isEnabled;

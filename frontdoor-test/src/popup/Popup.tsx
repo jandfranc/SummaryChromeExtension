@@ -40,7 +40,10 @@ const Popup: React.FC = () => {
             payload: { isEnabled: !isHighlightingEnabled },
         };
         chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-            chrome.tabs.sendMessage(tab.id, message);
+            if (tab.id) {
+                chrome.tabs.sendMessage(tab.id, message);
+            }
+
         });
     };
     return (

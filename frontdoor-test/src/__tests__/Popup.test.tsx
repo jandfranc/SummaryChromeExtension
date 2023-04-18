@@ -6,8 +6,6 @@ import Popup from '../popup/Popup';
 import "@testing-library/jest-dom/extend-expect";
 
 
-
-
 it('renders Popup component with correct content', () => {
     render(
         <SummaryProvider>

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { render, screen } from '@testing-library/react';
 import { SummaryProvider } from '../popup/SummaryContext';
 import FilterableHighlightsList from '../popup/FilterableHighlightsList';
